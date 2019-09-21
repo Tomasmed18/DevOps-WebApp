@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <title>Update album</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script type="text/javascript" src="/scripts/addSong.js"> </script>
+        <style media="screen">
+          #semi-transparent{
+            color: rgba(0, 0, 0, 0.4);
+          }
+        </style>
+    </head>
+    <body>
+      <a href="/albums"><img src="/views/resources/discordia_2.png" alt="Discordia" class="logo" style="width:400px;"></a>
+      <div class="container">
+        <h1>Update album "<%= album[0].name %>"</h1>
+        <br>
+        <form id="AlbumForm" class="form-group" action="/updateAlbumById/<%=album[0]._id%>" method="POST">
+            <div class="form-group mx-sm-3 mb-2">
+              <!-- ++++++++++++++++++++++++++ ALBUM NAME ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="name" class="mr-sm-2">Name</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control" name="name" value="<%= album[0].name %>" required>
+                </div>
+                <div class="col-9">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ BAND ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="band" class="mr-sm-2">Band</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control" name="band" value="<%=album[0].band%>" required>
+                </div>
+                <div class="col-9">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ MEMBERS ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="members" class="mr-sm-2">Members</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" name="members" value="<%=album[0].members%>">
+                </div>
+                <div class="col-7">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ YEAR ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="year" class="mr-sm-2">Year</label>
+                </div>
+                <div class="col-2">
+                  <input type="number" class="form-control" name="year" value="<%=parseInt(album[0].year)%>" required>
+                </div>
+                <div class="col-9">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ GENRES ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="genres" class="mr-sm-2">Genres</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" name="genres" value="<%=album[0].genres %>" required>
+                </div>
+                <div class="col-3">
+                  <label id="semi-transparent" for="genres" class="mr-sm-2"> (separated with commas)</label>
+                </div>
+                <div class="col-7">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ SONGS ++++++++++++++++++++++++++-->
+              <div class="row">
+                <div class="col-1">
+                  <label for="songs" class="mr-sm-2">Songs</label>
+                </div>
+                <div id="SongList" class="col-5">
+                  <% for(let i=0; i< album[0].songs.length ; i++){ %>
+                          <div class="row" id="row<%=i+1%>">
+                            <div class="col-7">
+                              <input type="text" name="song<%=i+1%>" class="form-control" value="<%=album[0].songs[i].songName%>" required>
+                            </div>
+                            <div class="col-4">
+                              <input type="text" name="length<%=i+1%>" class="form-control" value="<%=album[0].songs[i].length%>">
+                            </div>
+                          </div>
+                          <br>
+                  <% } %>
+                </div>
+                <div class="col-1">
+                  <button class="btn btn-primary mb-2" type="button" onclick="add()"> + </button>
+                </div>
+                <div class="col-1">
+                  <button class="btn btn-danger mb-2" type="button" onclick="remove()"> - </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10">
+              </div>
+              <div class="col-2">
+                <button type="submit" class="btn btn-warning mb-2">Update Album</button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </body>
+</html>

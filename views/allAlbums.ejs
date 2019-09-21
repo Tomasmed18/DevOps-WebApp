@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All albums</title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <style media="screen">
+    .pull-right {
+      float: right !important;
+    }
+  </style>
+  <script language="javascript">
+
+    function searchAlbums() {
+      var action_src = "http://localhost:3000/albums/" + document.getElementsByName("albumName")[0].value;
+      //console.log(document.getElementsByName("albumName")[0].value);
+      var albumSearchForm = document.getElementById('albumSearchForm');
+      albumSearchForm.action = action_src;
+    }
+
+    function searchBands() {
+      var action_src = "http://localhost:3000/bands/" + document.getElementsByName("bandName")[0].value;
+      var bandSearchForm = document.getElementById('bandSearchForm');
+      bandSearchForm.action = action_src;
+    }
+
+  </script>
+</head>
+<body>
+  <a href="/albums"><img src="/views/resources/discordia_2.png" alt="Discordia" class="logo" style="width:400px;"></a>
+  <div class="container">
+    <div class="row pull-right">
+      <form class="form-inline" id="albumSearchForm" onsubmit="searchAlbums()">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="albumName" class="sr-only">albumName</label>
+          <input type="text" class="form-control" id="albumName" placeholder="Death Magnetic" name="albumName">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Search by album name</button>
+      </form>
+      <form class="form-inline" id="bandSearchForm" onsubmit="searchBands()">
+        <div class="form-group mx-sm-3 mb-2">
+          <label for="bandName" class="sr-only">bandName</label>
+          <input type="text" class="form-control" id="bandName" placeholder="Metallica" name="bandName">
+        </div>
+        <button type="submit" class="btn btn-primary mb-2">Search by band</button>
+    </div>
+    <h1>List of all albums</h1>
+    <br>
+    <% if(albums.length>0) { %>
+    <table class="table dark">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Album Name</th>
+          <th scope="col">Band</th>
+          <th scope="col">Year</th>
+          <th scope="col">Score</th>
+          <th scope="col">Votes</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<albums.length;i++) { %>
+        <tr>
+          <td scope="row"><a href="/albumById/<%= albums[i]._id %>"><%= albums[i].name%></td>
+          <td scope="row"><a href="/bands/<%= albums[i].band %>"><%= albums[i].band%></td>
+          <td scope="row"><%= albums[i].year%></td>
+          <td scope="row"><%= albums[i].score.toFixed(1)%></td>
+          <td scope="row"><%= albums[i].scoreCount%></td>
+          <td scope="row">
+            <% for (let rate=1; rate<6 ; rate++){ %>
+            <a href="/rateAlbumById/<%= albums[i]._id %>/<%=rate %>" class="btn ">
+              <!-- <img src="/views/resources/star-empty.png" alt="star icon" class="star-icon-empty"> -->
+              <img src="/views/resources/star-empty-2.png" alt="star icon" class="star-icon-empty">
+            </a>
+            <% } %>
+            <a style="margin-left: 10px;" href="/updateAlbumMenu/<%= albums[i]._id %>" class="btn btn-warning mb-2 text-light">Update </a>
+            <a href="/deleteAlbumById/<%= albums[i]._id %>" class="btn btn-danger mb-2 text-light">Delete</a>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <% } else { %>
+    <div>No albums found.</div>
+    <% } %>
+    </form>
+    <div class="row">
+      <div class="col-5">
+      </div>
+      <div class="col-4">
+        <a href="/createAlbumMenu" class="btn btn-success mb-2 text-light">Add new Album!</a>
+      </div>
+      <div class="col-2">
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+    <script src="/scripts/fillRateStar.js"></script>
+</body>
+</html>

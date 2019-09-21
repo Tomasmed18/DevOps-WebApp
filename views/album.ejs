@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All albums</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+  <body>
+    <a href="/albums"><img src="/views/resources/discordia_2.png" alt="Discordia" style="width:400px;"></a>
+    <div class="container">
+      <h1>Album Information
+        <a style="margin-left: 10px;" href="/updateAlbumMenu/<%= album[0]._id %>" class="btn btn-warning mb-2 text-light">Update </a>
+        <a href="/deleteAlbumById/<%= album[0]._id %>" class="btn btn-danger mb-2 text-light">Delete</a>
+        <% for (let rate=1; rate<6 ; rate++){ %>
+          <a href="/rateAlbumById/<%= album[0]._id %>/<%=rate %>" class="btn ">
+            <!-- <img src="/views/resources/star-empty.png" alt="star icon" class="star-icon-empty"> -->
+            <img src="/views/resources/star-empty-2.png" alt="star icon" class="star-icon-empty">
+          </a>
+          <% } %>
+     </h1>
+     <br>
+      <% if(album.length>0) { %>
+        <% album=album[0]; %>
+      <table class= "table dark">
+        <thead  class="thead-light">
+          <tr>
+            <th scope="col">Album Name</th>
+            <th scope="col">Genres</th>
+            <th scope="col">Band</th>
+            <th scope="col">Members</th>
+            <th scope="col">Year</th>
+            <th scope="col">Score</th>
+            <th scope="col">Votes</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td scope="row"><%= album.name%></td>
+              <td scope="row"><%= album.genres%></td>
+              <td scope="row"><a href="/bands/<%= album.band %>"><%= album.band%> </a></td>
+              <td scope="row"><%= album.members%></td>
+              <td scope="row"><%= album.year%></td>
+              <td scope="row"><%= album.score.toFixed(1)%></td>
+              <td scope="row"><%= album.scoreCount%></td>
+            </tr>
+        </tbody>
+      </table>
+      <h1> Songs</h1>
+      <br>
+      <table class= "table dark">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Song Name</th>
+                <th scope="col">Length</th>
+            </tr>
+        <tbody>
+            <% for(let i=0; i<album.songs.length;i++){ %>
+                    <tr>
+                        <td scope="row"><%= album.songs[i].songName%></td>
+                        <td scope="row"><%= album.songs[i].length%></td>
+                    </tr>
+            <% } %>
+        </tbody>
+        </thead>
+      </table>
+      <% } else { %>
+        <div>Album not found.</div>
+      <% } %>
+      <a class="btn-primary mb-2" href="/"></a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/scripts/fillRateStar.js"></script>
+  </body>
+</html>

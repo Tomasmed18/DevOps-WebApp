@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+     <head>
+        <title>Create album</title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script type="text/javascript" src="/scripts/addSong.js"> </script>
+        <style media="screen">
+          #semi-transparent{
+            color: rgba(0, 0, 0, 0.4);
+          }
+        </style>
+    </head>
+    <body>
+      <a href="/albums"><img src="/views/resources/discordia_2.png" alt="Discordia" class="logo" style="width:400px;"></a>
+      <div class="container">
+        <h1>Add new album!</h1>
+        <br>
+        <form id="AlbumForm" class="form-group" action="/albums" method="POST">
+            <div class="form-group mx-sm-3 mb-2">
+              <!-- ++++++++++++++++++++++++++ ALBUM NAME ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="name" class="mr-sm-2">Name</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control" name="name" placeholder="Kill 'Em All" required>
+                </div>
+                <div class="col-9">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ BAND ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="band" class="mr-sm-2">Band</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" class="form-control" name="band" placeholder="Metallica" required>
+                </div>
+                <div class="col-9">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ MEMBERS ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="members" class="mr-sm-2">Members</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" name="members" placeholder="Kirk Hammett, James Hetfield">
+                </div>
+                <div class="col-7">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ YEAR ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="year" class="mr-sm-2">Year</label>
+                </div>
+                <div class="col-2">
+                  <input type="number" class="form-control" name="year" placeholder="1983" required>
+                </div>
+                <div class="col-9">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ GENRES ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="genres" class="mr-sm-2">Genres</label>
+                </div>
+                <div class="col-4">
+                  <input type="text" class="form-control" name="genres" placeholder="Thrash metal, Heavy Metal" required>
+                </div>
+                <div class="col-3">
+                  <label id="semi-transparent" for="genres" class="mr-sm-2"> (separated with commas)</label>
+                </div>
+                <div class="col-7">
+                </div>
+              </div>
+              <br>
+              <!-- ++++++++++++++++++++++++++ SONGS ++++++++++++++++++++++++++ -->
+              <div class="row">
+                <div class="col-1">
+                  <label for="songs" class="mr-sm-2">Songs</label>
+                </div>
+                <div id="SongList" class="col-5">
+                </div>
+                <div class="col-1">
+                  <button class="btn btn-primary mb-2" type="button" onclick="add()"> + </button>
+                </div>
+                <div class="col-1">
+                  <button class="btn btn-danger mb-2" type="button" onclick="remove()"> - </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-10">
+              </div>
+              <div class="col-2">
+                <button type="submit" class="btn btn-success mb-2">Create Album</button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </body>
+</html>
