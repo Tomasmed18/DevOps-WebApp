@@ -4,7 +4,7 @@ const DATABASE = 'bandsDB'
 const mongoose = require('mongoose')
 //const url = `mongodb://${USERNAME}:${PASS}@mongo:27017/${DATABASE}`
 const url = `mongodb://mongo:27017/${DATABASE}`
-mongoose.connect(url, { useNewUrlParser: true })
+mongoose.connect(url, { useNewUrlParser: true , useUnifiedTopology: true})
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
