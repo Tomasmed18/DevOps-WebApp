@@ -13,14 +13,14 @@
   <script language="javascript">
 
     function searchAlbums() {
-      var action_src = "http://localhost:3000/albums/" + document.getElementsByName("albumName")[0].value;
+      var action_src = "/albums/" + document.getElementsByName("albumName")[0].value;
       //console.log(document.getElementsByName("albumName")[0].value);
       var albumSearchForm = document.getElementById('albumSearchForm');
       albumSearchForm.action = action_src;
     }
 
     function searchBands() {
-      var action_src = "http://localhost:3000/bands/" + document.getElementsByName("bandName")[0].value;
+      var action_src = "/bands/" + document.getElementsByName("bandName")[0].value;
       var bandSearchForm = document.getElementById('bandSearchForm');
       bandSearchForm.action = action_src;
     }
