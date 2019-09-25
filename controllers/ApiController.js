@@ -2,7 +2,8 @@ const USERNAME = 'Tomas'
 const PASS = 'Contrasenia'
 const DATABASE = 'bandsDB'
 const mongoose = require('mongoose')
-const url = `mongodb://${USERNAME}:${PASS}@mongo:27017/${DATABASE}`
+//const url = `mongodb://${USERNAME}:${PASS}@mongo:27017/${DATABASE}`
+const url = `mongodb://mongo:27017/${DATABASE}`
 mongoose.connect(url, { useNewUrlParser: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));

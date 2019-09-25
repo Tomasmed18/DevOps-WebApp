@@ -12,6 +12,6 @@ services:
     ports:
       - "27017:27017"
     environment:
-      MONGO_INITDB_ROOT_USERNAME: Tomas
-      MONGO_INITDB_ROOT_PASSWORD: Contrasenia
-      MONGO_INITDB_DATABASE: bandsDB
+      - "MONGO_INITDB_ROOT_USERNAME:Tomas"
+      - "MONGO_INITDB_ROOT_PASSWORD:Contrasenia"
+      - "MONGO_INITDB_DATABASE:bandsDB"
