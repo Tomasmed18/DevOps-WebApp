@@ -12,6 +12,7 @@ install:
 
 before_script:
   - docker-compose up -d
+  - npm install mocha
 
 script:
   - npm run test
