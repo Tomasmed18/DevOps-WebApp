@@ -1,5 +1,6 @@
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const { expect } = require('chai');
+require('geckodriver');
 const IP_ADDRESS = "localhost";
 
 
