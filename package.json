@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "test": "mocha ./tests/http-tests.js",
-    "browser-test": "mocha ./tests/browser-tests.js --timeout 15000"
+    "browser-test": "mocha ./tests/browser-tests.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
