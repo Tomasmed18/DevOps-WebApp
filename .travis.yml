@@ -13,6 +13,7 @@ install:
 
 before_script:
   - npm install mocha
+  - npm install nyc
   - docker-compose up -d
   - echo $PATH
 
