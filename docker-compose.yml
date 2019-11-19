@@ -1,8 +1,11 @@
 version: '3'
 services:
   app:
-    image: tomasmed18/devops-app:version_1
+    container_name: app
     restart: always
+    build:
+     context: ./
+     dockerfile: Dockerfile
     ports:
       - "3000:3000"
     depends_on:
