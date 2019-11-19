@@ -18,4 +18,5 @@ before_script:
 
 script:
   - npm run test
-  - npm run browser-test
+  #- npm run browser-test
+  - docker-compose exec app nyc --reporter=lcovonly --reporter=text mocha
