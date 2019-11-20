@@ -7,9 +7,6 @@ services:
 
 addons:
   firefox: "latest"
-  #browserstack:
-  #  username: "tomasmedina1"
-  #  access_key: BROWSERSTACK_KEY
 
 install:
   - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
@@ -19,12 +16,16 @@ install:
 
 before_script:
   - npm install mocha
-  - npm install nyc
   - docker-compose up -d
   - echo $PATH
 
 script:
+  - whereis geckodriver
+  - whereis firefox
+  - geckodriver --version
+  - firefox --version
+  - selenium-webdriver --version
+  #- mostrar version de gecko y firefox y selenium
+  - export MOZ_HEADLESS=1
   - npm run test
   - npm run browser-test
-#  - npm run browserstack-test
-#- docker-compose exec app nyc --reporter=lcovonly --reporter=text mocha
