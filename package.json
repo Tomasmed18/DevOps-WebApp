@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "test": "mocha ./tests/http-tests.js",
     "browser-test": "mocha ./tests/browser-tests.js",
-    "browserstack-test": "node ./tests/test-browserstack.js"
+    "browserstack-test": "node ./tests/test-browserstack.js",
+    "selenium-version": "selenium-webdriver --version"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
