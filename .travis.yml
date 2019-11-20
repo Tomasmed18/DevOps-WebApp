@@ -5,10 +5,13 @@ node_js:
 services:
   - docker
 
+addons:
+  firefox: "latest"
+
 install:
-  - wget https://github.com/mozilla/geckodriver/releases/download/v0.11.1/geckodriver-v0.11.1-linux64.tar.gz
+  - wget https://github.com/mozilla/geckodriver/releases/download/v0.20.1/geckodriver-v0.20.1-linux64.tar.gz
   - mkdir geckodriver
-  - tar -xzf geckodriver-v0.11.1-linux64.tar.gz -C geckodriver
+  - tar -xzf geckodriver-v0.20.1-linux64.tar.gz -C geckodriver
   - export PATH=$PATH:$PWD/geckodriver
 
 before_script:
@@ -19,5 +22,5 @@ before_script:
 
 script:
   - npm run test
-  #- npm run browser-test
+  - npm run browser-test
 #- docker-compose exec app nyc --reporter=lcovonly --reporter=text mocha
