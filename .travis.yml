@@ -15,7 +15,7 @@ install:
   - export PATH=$PATH:$PWD/geckodriver
 
 before_script:
-  - npm install mocha
+  - npm install
   - docker-compose up -d
   - echo $PATH
 
