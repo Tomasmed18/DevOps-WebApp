@@ -20,6 +20,7 @@ before_script:
   - echo $PATH
 
 script:
+  - echo ${TEST}
   - whereis geckodriver
   - whereis firefox
   - geckodriver --version
