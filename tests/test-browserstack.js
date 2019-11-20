@@ -8,7 +8,7 @@ var capabilities = {
  'os_version' : '10',
  'resolution' : '1024x768',
  'browserstack.user' : 'tomasmedina1',
- 'browserstack.key' : `${BROWSERSTACK_KEY}`,
+ 'browserstack.key' : 'SECRET',
  'name' : 'Bstack-[Node] Sample Test'
 }
 
