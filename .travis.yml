@@ -24,7 +24,7 @@ script:
   - whereis firefox
   - geckodriver --version
   - firefox --version
-  - npm run selenium-version
+  #- npm run selenium-version
   #- mostrar version de gecko y firefox y selenium
   - export MOZ_HEADLESS=1
   - npm run test
