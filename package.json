@@ -6,7 +6,7 @@
     "start": "node ./bin/www",
     "test": "mocha ./tests/http-tests.js",
     "browser-test": "mocha ./tests/browser-tests.js",
-    "test-nyc": "nyc --reporter=text mocha"
+    "browserstack-test": "node ./tests/test-browserstack.js"
   },
   "dependencies": {
     "body-parser": "~1.18.2",
